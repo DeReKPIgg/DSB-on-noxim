@@ -23,7 +23,8 @@ Or, to get just the latest master sources, you can run:
 Generate Simulation Result
 -----------
 
-Go to directory of Noxim/bin/
+Go to directory of Noxim/bin/:
+
     ./noxim -config ../config_examples/test.yaml > sim_test.out
 
 
@@ -45,10 +46,10 @@ V. Catania, A. Mineo, S. Monteleone, M. Palesi and D. Patti, "Energy efficient t
 
 **Distributed Shared-Buffer NoC Router**
 
- Rohit Sunkam Ramanujam∗, Vassos Soteriou†, Bill Lin∗ and Li-Shiuan Peh‡. Design of a High-Throughput Distributed Shared-Buffer NoC Router. 2010 Fourth ACM/IEEE International Symposium on Networks-on-Chip
- ∗Department of Electrical and Computer Engineering, University of California, San Diego
- †Department of Electrical Engineering and Information Technology, Cyprus University of Technology
- ‡Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology
+ Rohit Sunkam Ramanujam∗, Vassos Soteriou†, Bill Lin∗ and Li-Shiuan Peh‡. Design of a High-Throughput Distributed Shared-Buffer NoC Router. 2010 Fourth ACM/IEEE International Symposium on Networks-on-Chip\n
+ ∗Department of Electrical and Computer Engineering, University of California, San Diego\n
+ †Department of Electrical Engineering and Information Technology, Cyprus University of Technology\n
+ ‡Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology\n
 
 Registration
 ------------
