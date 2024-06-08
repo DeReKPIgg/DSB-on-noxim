@@ -27,9 +27,9 @@ We simulate three architectures with three kinds of traffic patterns, and try to
 Since the delay function in Noxim only considers those received instead of all generated flits, the delay might be underestimated with a low received/ideal flits ratio. Therefore, we redefine the average delay function and set it to the maximum value (total cycles) as a penalty if the flit cannot reach the destination.
 By defining the saturation as the point that delay = 500 cycles, we can observe that the postponement of saturation is the most obvious in the Random traffic. As the plot shows, 5-MM and 10-MM DSBs outperform IBR by 17.19% and 30.43% respectively. There are also visible progress in the Bit Reversal case, they improve 4.89% and 7.73% respectively on the maximum affordable injection rate. However, the performance only changes by 2.22% and 2.66% in the Transpose2 case.
 
-![image](/img/Random.jpg "Random")
+![image](/img/Random.jpg "Random")\
 
-![image](/img/Bit_Reversal.jpg "Bit_Reversal")
+![image](/img/Bit_Reversal.jpg "Bit_Reversal")\
 
 ![image](/img/Transpose2.jpg "Transpose2")
 
