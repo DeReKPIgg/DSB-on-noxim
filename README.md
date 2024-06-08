@@ -18,6 +18,10 @@ Similarly for macOS:
 
 Or, to get just the latest master sources, you can run:
 
+    git clone https://github.com/davidepatti/noxim.git
+
+To get DSB code, you can run:
+
     git clone https://github.com/DeReKPIgg/DSB-on-noxim.git
 
 Generate Simulation Result
