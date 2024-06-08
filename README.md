@@ -1,11 +1,9 @@
 # Special Project on Electrical Engineering
-=========================
 
 This is an electrical engineering project of National Yang Ming Chiao Tung University. 
 We reimplemented structure of distributed shared-buffer router by adapting source code of Noxim and compare the performance with Noxim's original input buffer router structure.
 
 ## Installation & Quick Start
------------
 
 If you are working on Ubuntu, you can install noxim and all the dependencies with the following command:
 (**BE sure of copying the entire line, i.e., ending with "ubuntu.sh"**)
@@ -24,8 +22,7 @@ To get DSB code, you can run:
 
     git clone https://github.com/DeReKPIgg/DSB-on-noxim.git
 
-Generate Simulation Result
------------
+## Generate Simulation Result
 
 Go to directory of Noxim/bin/:
 
@@ -34,8 +31,8 @@ Go to directory of Noxim/bin/:
 
 
 
-Citation
-------------
+## Citation
+
 **Noxim**
 
 Using Noxim (a netwok on chip simulator) , thanks to V. Catania, A. Mineo, S. Monteleone, M. Palesi, D. Patti. Noxim: An Open, Extensible and Cycle-accurate Network on Chip Simulator. IEEE International Conference on Application-specific Systems, Architectures and Processors 2015. July 27-29, 2015, Toronto, Canada.
@@ -56,8 +53,8 @@ V. Catania, A. Mineo, S. Monteleone, M. Palesi and D. Patti, "Energy efficient t
  †Department of Electrical Engineering and Information Technology, Cyprus University of Technology\
  ‡Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology
 
-Registration
-------------
+## Registration
+
 To receive information about new Noxim features, updates and events, please register here:
 [Registration Form](https://docs.google.com/forms/d/e/1FAIpQLSfJnYQZwxC4gr4jUc-nuwuGp0MDBA-0N_TVf8hqV1DIa325Dg/viewform?c=0&w=1)
 
