@@ -29,15 +29,15 @@ By defining the saturation as the point that delay = 500 cycles, we can observe 
 
 ### Random Traffic
 
-![image](/img/Random.jpg "Random")
+![image1](/img/Random.jpg "Random")
 
 ### Bit_Reversal Traffic
 
-![image](/img/Bit_Reversal.jpg "Bit_Reversal")
+![image2](/img/Bit_Reversal.jpg "Bit_Reversal")
 
 ### Transpose2 Traffic
 
-![image](/img/Transpose2.jpg "Transpose2")
+![image3](/img/Transpose2.jpg "Transpose2")
 
 
 ## Installation & Quick Start
