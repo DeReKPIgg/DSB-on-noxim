@@ -1,4 +1,4 @@
-Special Project on Electrical Engineering
+# Special Project on Electrical Engineering
 =========================
 
 This is an electrical engineering project of National Yang Ming Chiao Tung University. 
@@ -30,6 +30,7 @@ Generate Simulation Result
 Go to directory of Noxim/bin/:
 
     ./noxim -config ../config_examples/DSBonNoxim.yaml > sim_test.out
+
 
 
 
