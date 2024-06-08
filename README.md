@@ -4,7 +4,7 @@
 This is an electrical engineering project of National Yang Ming Chiao Tung University. 
 We reimplemented structure of distributed shared-buffer router by adapting source code of Noxim and compare the performance with Noxim's original input buffer router structure.
 
-Installation & Quick Start
+## Installation & Quick Start
 -----------
 
 If you are working on Ubuntu, you can install noxim and all the dependencies with the following command:
