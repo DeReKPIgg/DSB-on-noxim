@@ -67,7 +67,7 @@ Go to directory of Noxim/bin/:
 
 ## Custom Settings
 
-By changing 'traffic_distribution' in yaml file, you can choose different traffic type.
+By changing 'traffic_distribution' in yaml file, you can choose different traffic type.\
 By changing 'packet_injection_rate' in yaml file, you can modify injection rate.
 
 ## Citation
