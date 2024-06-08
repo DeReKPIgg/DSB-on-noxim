@@ -25,7 +25,7 @@ Generate Simulation Result
 
 Go to directory of Noxim/bin/:
 
-    ./noxim -config ../config_examples/test.yaml > sim_test.out
+    ./noxim -config ../config_examples/DSBonNoxim.yaml > sim_test.out
 
 
 
