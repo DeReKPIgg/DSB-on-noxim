@@ -1,4 +1,4 @@
-# Special Project on Electrical Engineering
+# Special Project on Electrical Engineering (2024 Spring)
 
 This is an electrical engineering project of National Yang Ming Chiao Tung University. 
 We reimplemented structure of distributed shared-buffer router by adapting source code of Noxim and compare the performance with Noxim's original input buffer router structure.
