@@ -8,7 +8,7 @@ Installation & Quick Start
 -----------
 
 If you are working on Ubuntu, you can install noxim and all the dependencies with the following command:
-(**BE sure of copying the entire line, i.e., ending with "ubuntu.sh**)
+(**BE sure of copying the entire line, i.e., ending with "ubuntu.sh"**)
 
     bash <(wget -qO- --no-check-certificate https://raw.githubusercontent.com/davidepatti/noxim/master/other/setup/ubuntu.sh)
 
@@ -20,9 +20,18 @@ Or, to get just the latest master sources, you can run:
 
     git clone https://github.com/davidepatti/noxim.git
 
+Generate Simulation Result
+-----------
+
+Go to directory of Noxim/bin/
+    ./noxim -config ../config_examples/test.yaml > sim_test.out
+
+
+
 Citation
 ------------
 **Noxim**
+
 Using Noxim (a netwok on chip simulator) , thanks to V. Catania, A. Mineo, S. Monteleone, M. Palesi, D. Patti. Noxim: An Open, Extensible and Cycle-accurate Network on Chip Simulator. IEEE International Conference on Application-specific Systems, Architectures and Processors 2015. July 27-29, 2015, Toronto, Canada.
 
 Link to noxim original source-code: https://github.com/davidepatti/noxim
@@ -35,6 +44,7 @@ V. Catania, A. Mineo, S. Monteleone, M. Palesi and D. Patti, "Energy efficient t
 [Scopus reference](https://www.scopus.com/record/display.uri?eid=2-s2.0-84973661681&origin=resultslist&sort=plf-f&src=s&sid=4bd3ffce04cc0093a84655249383aefa&sot=autdocs&sdt=autdocs&sl=18&s=AU-ID%2835610853000%29&relpos=11&citeCnt=11&searchTerm=)
 
 **Distributed Shared-Buffer NoC Router**
+
  Rohit Sunkam Ramanujam∗, Vassos Soteriou†, Bill Lin∗ and Li-Shiuan Peh‡. Design of a High-Throughput Distributed Shared-Buffer NoC Router. 2010 Fourth ACM/IEEE International Symposium on Networks-on-Chip
  ∗Department of Electrical and Computer Engineering, University of California, San Diego
  †Department of Electrical Engineering and Information Technology, Cyprus University of Technology
