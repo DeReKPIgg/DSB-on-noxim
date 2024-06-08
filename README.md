@@ -28,7 +28,23 @@ Go to directory of Noxim/bin/:
 
     ./noxim -config ../config_examples/DSBonNoxim.yaml > sim_test.out
 
+## Distributed Shared-Buffer Reimplementation
 
+The Input Buffer Router (IBR) and Distributed Shared-Buffer (DSB) router have three and five pipeline stage for hardware design, respectively. In Noxim, IBR has been reduced to two stages with merely RX and TX stage, and all computation is in two-phase TX stage. Hence, we also reduce DSB into three stages.
+
+![image](/img/DSB.jpg "DSB architecture")
+
+### RX stage
+
+A flit from one direction arrives in the corresponding slot in the first in first out (FIFO) input buffer (IB) with its own VC ID, which is essentially identical to the IBR process.
+
+### IB2MM stage
+
+After the routing algorithm is performed. We check if there is a valid VC for each flit. Preventing the arrival conflict by assigning only one flit to one MM in a cycle. And, departure conflict is avoided by assigning staggered timestamp so that we won’t have flits that depart through same output port at the same cycle. If all the conditions above are met, the flit in the IB is moved to the corresponding MM slot.
+
+### TX stage 
+
+We can pop a whole column of flits in the MM to the output ports with respect to the current timestamp. At last, circular shift the router timestamp.
 
 
 ## Citation
