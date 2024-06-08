@@ -18,7 +18,7 @@ Similarly for macOS:
 
 Or, to get just the latest master sources, you can run:
 
-    git clone https://github.com/davidepatti/noxim.git
+    git clone https://github.com/DeReKPIgg/DSB-on-noxim.git
 
 Generate Simulation Result
 -----------
@@ -49,7 +49,7 @@ V. Catania, A. Mineo, S. Monteleone, M. Palesi and D. Patti, "Energy efficient t
  Rohit Sunkam Ramanujam∗, Vassos Soteriou†, Bill Lin∗ and Li-Shiuan Peh‡. Design of a High-Throughput Distributed Shared-Buffer NoC Router. 2010 Fourth ACM/IEEE International Symposium on Networks-on-Chip\
  ∗Department of Electrical and Computer Engineering, University of California, San Diego\
  †Department of Electrical Engineering and Information Technology, Cyprus University of Technology\
- ‡Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology\
+ ‡Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology
 
 Registration
 ------------
