@@ -72,6 +72,7 @@ struct RouteData {
     int dst_id;
     int dir_in;			// direction from which the packet comes from
     int vc_id;
+    bool routed = false;
 };
 
 struct ChannelStatus {
@@ -103,8 +104,9 @@ struct NoP_data {
 struct TBufferFullStatus {
     TBufferFullStatus()
     {
-	for (int i=0;i<MAX_VIRTUAL_CHANNELS;i++)
-	    mask[i] = false;
+	for (int i=0;i<MAX_VIRTUAL_CHANNELS;i++) {
+        mask[i] = false; precise_occupied_slot[i] = 0;
+    }
     };
     inline bool operator ==(const TBufferFullStatus & bfs) const {
 	for (int i=0;i<MAX_VIRTUAL_CHANNELS;i++)
@@ -113,6 +115,7 @@ struct TBufferFullStatus {
     };
    
     bool mask[MAX_VIRTUAL_CHANNELS];
+    int precise_occupied_slot[MAX_VIRTUAL_CHANNELS];
 };
 
 // Flit -- Flit definition
@@ -127,8 +130,9 @@ struct Flit {
     double timestamp;		// Unix timestamp at packet generation
     int hop_no;			// Current number of hops from source to destination
     bool use_low_voltage_path;
-
     int hub_relay_node;
+
+    int next_outport; // for DSB design
 
     inline bool operator ==(const Flit & flit) const {
 	return (flit.src_id == src_id && flit.dst_id == dst_id
@@ -140,7 +144,6 @@ struct Flit {
 		&& flit.hop_no == hop_no
 		&& flit.use_low_voltage_path == use_low_voltage_path);
 }};
-
 
 typedef struct 
 {

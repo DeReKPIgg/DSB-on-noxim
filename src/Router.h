@@ -62,7 +62,8 @@ SC_MODULE(Router)
     int local_id;		                // Unique ID
     int routing_type;		                // Type of routing algorithm
     int selection_type;
-    BufferBank buffer[DIRECTIONS + 2];		// buffer[direction][virtual_channel] 
+    BufferBank buffer[DIRECTIONS + 2];		// buffer[direction][virtual_channel] Input Buffer
+    
     bool current_level_rx[DIRECTIONS + 2];	// Current level for Alternating Bit Protocol (ABP)
     bool current_level_tx[DIRECTIONS + 2];	// Current level for Alternating Bit Protocol (ABP)
     Stats stats;		                // Statistics
@@ -72,12 +73,18 @@ SC_MODULE(Router)
     unsigned long routed_flits;
     RoutingAlgorithm * routingAlgorithm; 
     SelectionStrategy * selectionStrategy; 
-    
+
+    // Registers for Middle memory
+    int circular_timestamp;
+    MMBufferBank Middle_buffer;    // Middle Memory // index i: 0~4 = 0~(DIRECTIONS + 2 - 1)
+                                                    // index j: 0~3 = slots 
+
     // Functions
 
     void process();
     void rxProcess();		// The receiving process
-    void txProcess();		// The transmitting process
+    void txProcess();		// The transmitting process (Middle memory to Link Traversal)
+    void ib2mmProcess(); // From Input buffer to middle memory
     void perCycleUpdate();
     void configure(const int _id, const double _warm_up_time,
 		   const unsigned int _max_buffer_size,
@@ -134,6 +141,10 @@ SC_MODULE(Router)
     int start_from_vc[DIRECTIONS+2]; // VC from which to start the reservation cycle for the specific port
 
     vector<int> nextDeltaHops(RouteData rd);
+
+    pair<bool,pair<int, int>> GetValidNVC(int available_slots[][MAX_VIRTUAL_CHANNELS], int TS, int next_port);
+    // 
+
   public:
     unsigned int local_drained;
 

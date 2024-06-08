@@ -57,6 +57,7 @@ class GlobalStats {
     // communication src_id->dst_id
     double getAverageThroughput(const int src_id, const int dst_id);
 
+    unsigned int getTotalFlits();
     // Returns the total number of received packets
     unsigned int getReceivedPackets();
 

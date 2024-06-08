@@ -22,6 +22,8 @@ using namespace std;
 #define CONFIG_FILENAME        "config.yaml"
 #define POWER_CONFIG_FILENAME  "power.yaml"
 
+#define FLITS_IN_PACKET 8
+
 // Define the directions as numbers
 #define DIRECTIONS              4
 #define DIRECTION_NORTH         0
@@ -34,6 +36,7 @@ using namespace std;
 #define DIRECTION_WIRELESS    747
 
 #define MAX_VIRTUAL_CHANNELS	8
+#define MAX_MIDDLE_MEMORY   10
 #define DEFAULT_VC 		0
 
 #define RT_AVAILABLE 1
@@ -149,6 +152,7 @@ struct GlobalParams {
     static double r2r_link_length;
     static double r2h_link_length;
     static int buffer_depth;
+    static int MM_buffer_depth;
     static int flit_size;
     static int min_packet_size;
     static int max_packet_size;
@@ -156,6 +160,7 @@ struct GlobalParams {
     static string routing_table_filename;
     static string selection_strategy;
     static double packet_injection_rate;
+    static int packet_injected_count;
     static double probability_of_retransmission;
     static double locality;
     static string traffic_distribution;

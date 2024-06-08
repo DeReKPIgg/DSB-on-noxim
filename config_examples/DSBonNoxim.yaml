@@ -1,29 +1,42 @@
-# Simple config of a 16x16 mesh with 16 RadioHubs
+# ./noxim -config ../config_examples/test.yaml > sim_test.out
+# Simple default config of a 4x4 mesh
 # Each parameter is overwritten when corresponding command line value is set
 #
 # NOC & WIRED CONFIGURATION
 #
 #
+# Topologies:
+#   MESH
+#   BUTTERFLY
+#   BASELINE
+#   OMEGA
+#
+#   BUTTERFLY, BASELINE, and OMEGA are Delta Network topologies
+# topology: MESH
 # X and Y mesh sizes
-mesh_dim_x: 16
-mesh_dim_y: 16
+mesh_dim_x: 4
+mesh_dim_y: 4
 # number of flits for each router buffer
 buffer_depth: 4
+# Middle memory buffer depth
+MM_buffer_depth: 4
 # size of flits, in bits
 flit_size: 32
 # lenght in mm of router to hub connection
 r2h_link_length: 2.0
 # lenght in mm of router to router connection
 r2r_link_length: 1.0
-n_virtual_channels: 1
+n_virtual_channels: 8
 
 # Routing algorithms:
 #   XY
+#   DELTA
 #   WEST_FIRST
 #   NORTH_LAST
 #   NEGATIVE_FIRST
 #   ODD_EVEN
 #   DYAD
+#   HAMILTON
 #   TABLE_BASED
 # Each of the above labels should match a corresponding
 # implementation in the routingAlgorithms source code directory
@@ -56,8 +69,8 @@ Hubs:
         to_tile_buffer_size: 4
         from_tile_buffer_size: 4
     # size of antenna tx/rx
-        rx_buffer_size: 64
-        tx_buffer_size: 64
+        rx_buffer_size: 4
+        tx_buffer_size: 4
 
 # for each hub, the same parameters specified above can be customized
 # If not specified, the above default values will be used
@@ -67,57 +80,16 @@ Hubs:
 # sub-meshes
 
     0:
-        attached_nodes: [17, 18, 33, 34]
+      attached_nodes: [0,1,4,5]
 
     1:
-        attached_nodes: [21, 22, 37, 38]
+      attached_nodes: [2,3,6,7]
 
     2:
-        attached_nodes: [25, 26, 41, 42]
+      attached_nodes: [8,9,12,13]
 
     3:
-        attached_nodes: [29, 30, 45, 46]
-
-    4:
-        attached_nodes: [81, 82, 97, 98]
-
-    5:
-        attached_nodes: [85, 86, 101, 102]
-
-    6:
-        attached_nodes: [89, 90, 105, 106]
-
-    7:
-        attached_nodes: [93, 94, 109, 110]
-
-    8:
-        attached_nodes: [145, 146, 161, 162]
-
-    9:
-        attached_nodes: [149,150, 165, 166]
-
-    10:
-        attached_nodes: [153,154, 169, 170]
-
-    11:
-        attached_nodes: [157, 158, 173, 174]
-
-    12:
-        attached_nodes: [209, 210, 225, 226]
-
-    13:
-        attached_nodes: [213, 214, 229, 230]
-
-    14:
-        attached_nodes: [217, 218, 233, 234]
-
-    15:
-        attached_nodes: [221, 222, 237, 238]
-
-
-
-
-
+      attached_nodes: [10,11,14,15]
 
 # Transmission channels configuration
 # each channel modelizes the transmission over a given frequency that
@@ -142,10 +114,9 @@ RadioChannels:
     # who has the token, holds the packet until needed for
     # transmissions, until a max number of cycles is reached
         #[TOKEN_MAX_HOLD, max_hold_cycles]
-
         mac_policy: [TOKEN_PACKET]
 
-#
+
 # SIMULATION PARAMETERS
 #
 clock_period_ps: 1000
@@ -154,9 +125,9 @@ reset_time: 1000
 # overal simulation lenght, expressed in cycles
 simulation_time: 10000
 # collect stats after a given number of cycles
-stats_warm_up_time: 1000
+stats_warm_up_time: 0
 # power breakdown, nodes communication details
-detailed: false
+detailed: true
 # stop after a given amount of load has been processed
 max_volume_to_be_drained: 0
 show_buffer_stats: false
@@ -168,20 +139,20 @@ use_winoc: false
 # experimental power saving strategy
 use_wirxsleep: false
 
-# Verbosity level:
+# Verbosity level: //info in sim.out
 #   VERBOSE_OFF
 #   VERBOSE_LOW
 #   VERBOSE_MEDIUM
 #   VERBOSE_HIGH
-verbose_mode: VERBOSE_OFF
+verbose_mode: VERBOSE_HIGH
 
 # Trace
 trace_mode: false
 trace_filename: ""
 
-min_packet_size: 12
-max_packet_size: 12
-packet_injection_rate: 0.01
+min_packet_size: 8
+max_packet_size: 8
+packet_injection_rate: 0.02225
 probability_of_retransmission: 0.01
 
 # Traffic distribution:
@@ -193,7 +164,10 @@ probability_of_retransmission: 0.01
 #   TRAFFIC_BIT_REVERSAL
 #   TRAFFIC_SHUFFLE
 #   TRAFFIC_BUTTERFLY
-traffic_distribution: TRAFFIC_RANDOM
+#   TRAFFIC_TABLE_BASED
+traffic_distribution: TRAFFIC_TRANSPOSE2
 # when traffic table based is specified, use the following
 # configuration file
-traffic_table_filename: "t.txt"
+traffic_table_filename: "more_t.txt"
+
+# ./noxim -config ../config_examples/default_config.yaml > sim.out

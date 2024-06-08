@@ -84,5 +84,7 @@ class Buffer {
 
 typedef Buffer BufferBank[MAX_VIRTUAL_CHANNELS];
 
+typedef Buffer MMBufferBank[MAX_MIDDLE_MEMORY][4]; // 4 is GlobalParams::MM_buffer_depth
+
 
 #endif

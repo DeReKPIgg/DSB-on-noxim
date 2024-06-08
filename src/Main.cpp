@@ -97,17 +97,12 @@ int sc_main(int arg_num, char *arg_vet[])
     reset.write(1);
     cout << "Reset for " << (int)(GlobalParams::reset_time) << " cycles... ";
     srand(GlobalParams::rnd_generator_seed);
-
-    // fix clock periods different from 1ns
-    //sc_start(GlobalParams::reset_time, SC_NS);
-    sc_start(GlobalParams::reset_time * GlobalParams::clock_period_ps, SC_PS);
+    sc_start(GlobalParams::reset_time, SC_NS);
 
     reset.write(0);
     cout << " done! " << endl;
     cout << " Now running for " << GlobalParams:: simulation_time << " cycles..." << endl;
-    // fix clock periods different from 1ns
-    //sc_start(GlobalParams::simulation_time, SC_NS);
-    sc_start(GlobalParams::simulation_time * GlobalParams::clock_period_ps, SC_PS);
+    sc_start(GlobalParams::simulation_time, SC_NS);
 
 
     // Close the simulation
