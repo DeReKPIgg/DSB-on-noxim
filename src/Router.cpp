@@ -189,7 +189,7 @@ void Router::ib2mmProcess()
 
 						Candidate_outport[i] = o;
 						Candidate_RouteData[i] = route_data;
-						break;
+						break; // HuH?
 					}
 				}
 				start_from_vc[i] = (start_from_vc[i] + 1) % GlobalParams::n_virtual_channels;
