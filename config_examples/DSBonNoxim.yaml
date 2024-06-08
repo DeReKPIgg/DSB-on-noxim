@@ -152,7 +152,7 @@ trace_filename: ""
 
 min_packet_size: 8
 max_packet_size: 8
-packet_injection_rate: 0.02225
+packet_injection_rate: 0.04
 probability_of_retransmission: 0.01
 
 # Traffic distribution:
@@ -165,9 +165,9 @@ probability_of_retransmission: 0.01
 #   TRAFFIC_SHUFFLE
 #   TRAFFIC_BUTTERFLY
 #   TRAFFIC_TABLE_BASED
-traffic_distribution: TRAFFIC_TRANSPOSE2
+traffic_distribution: TRAFFIC_RANDOM
 # when traffic table based is specified, use the following
 # configuration file
-traffic_table_filename: "more_t.txt"
+traffic_table_filename: 
 
 # ./noxim -config ../config_examples/default_config.yaml > sim.out

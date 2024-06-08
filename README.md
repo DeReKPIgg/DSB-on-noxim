@@ -3,6 +3,35 @@
 This is an electrical engineering project of National Yang Ming Chiao Tung University. 
 We reimplemented structure of distributed shared-buffer router by adapting source code of Noxim and compare the performance with Noxim's original input buffer router structure.
 
+## Distributed Shared-Buffer Reimplementation
+
+The Input Buffer Router (IBR) and Distributed Shared-Buffer (DSB) router have three and five pipeline stage for hardware design, respectively. In Noxim, IBR has been reduced to two stages with merely RX and TX stage, and all computation is in two-phase TX stage. Hence, we also reduce DSB into three stages.
+
+![image](/img/DSB.jpg "DSB architecture")
+
+### RX stage
+
+A flit from one direction arrives in the corresponding slot in the first in first out (FIFO) input buffer (IB) with its own VC ID, which is essentially identical to the IBR process.
+
+### IB2MM stage
+
+After the routing algorithm is performed. We check if there is a valid VC for each flit. Preventing the arrival conflict by assigning only one flit to one MM in a cycle. And, departure conflict is avoided by assigning staggered timestamp so that we won’t have flits that depart through same output port at the same cycle. If all the conditions above are met, the flit in the IB is moved to the corresponding MM slot.
+
+### TX stage 
+
+We can pop a whole column of flits in the MM to the output ports with respect to the current timestamp. At last, circular shift the router timestamp.
+
+## Experiment Result
+
+We simulate three architectures with three kinds of traffic patterns, and try to find the saturation point of each condition by the soaring average delay.
+Since the delay function in Noxim only considers those received instead of all generated flits, the delay might be underestimated with a low received/ideal flits ratio. Therefore, we redefine the average delay function and set it to the maximum value (total cycles) as a penalty if the flit cannot reach the destination.
+By defining the saturation as the point that delay = 500 cycles, we can observe that the postponement of saturation is the most obvious in the Random traffic. As the plot shows, 5-MM and 10-MM DSBs outperform IBR by 17.19% and 30.43% respectively. There are also visible progress in the Bit Reversal case, they improve 4.89% and 7.73% respectively on the maximum affordable injection rate. However, the performance only changes by 2.22% and 2.66% in the Transpose2 case.
+
+![image](/img/Random.jpg "Random")
+![image](/img/Bit_Reversal.jpg "Bit_Reversal")
+![image](/img/Transpose2.jpg "Transpose2")
+
+
 ## Installation & Quick Start
 
 If you are working on Ubuntu, you can install noxim and all the dependencies with the following command:
@@ -28,24 +57,10 @@ Go to directory of Noxim/bin/:
 
     ./noxim -config ../config_examples/DSBonNoxim.yaml > sim_test.out
 
-## Distributed Shared-Buffer Reimplementation
+## Custom Settings
 
-The Input Buffer Router (IBR) and Distributed Shared-Buffer (DSB) router have three and five pipeline stage for hardware design, respectively. In Noxim, IBR has been reduced to two stages with merely RX and TX stage, and all computation is in two-phase TX stage. Hence, we also reduce DSB into three stages.
-
-![image](/img/DSB.jpg "DSB architecture")
-
-### RX stage
-
-A flit from one direction arrives in the corresponding slot in the first in first out (FIFO) input buffer (IB) with its own VC ID, which is essentially identical to the IBR process.
-
-### IB2MM stage
-
-After the routing algorithm is performed. We check if there is a valid VC for each flit. Preventing the arrival conflict by assigning only one flit to one MM in a cycle. And, departure conflict is avoided by assigning staggered timestamp so that we won’t have flits that depart through same output port at the same cycle. If all the conditions above are met, the flit in the IB is moved to the corresponding MM slot.
-
-### TX stage 
-
-We can pop a whole column of flits in the MM to the output ports with respect to the current timestamp. At last, circular shift the router timestamp.
-
+By changing 'traffic_distribution' in yaml file, you can choose different traffic type.
+By changing 'packet_injection_rate' in yaml file, you can modify injection rate.
 
 ## Citation
 
