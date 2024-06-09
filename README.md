@@ -70,6 +70,10 @@ Go to directory of Noxim/bin/:
 By changing 'traffic_distribution' in yaml file, you can choose different traffic type.\
 By changing 'packet_injection_rate' in yaml file, you can modify injection rate.
 
+## Advisor
+
+This project is supported by Cerebral and Reliable SoC Laboratory (CERES Lab): https://sites.google.com/site/cereslaben
+
 ## Citation
 
 **Noxim**
